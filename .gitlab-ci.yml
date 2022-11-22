@@ -2,8 +2,9 @@ stages:
   - build
   - style
   - test
+  # - deploy
 
-build-job:
+builds:
   stage: build
   when: always
   tags:
@@ -19,7 +20,7 @@ build-job:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
 
-style_test:
+styles:
   stage: style
   when: always
   tags:
@@ -30,7 +31,7 @@ style_test:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
 
-inter_test:
+tests:
   stage: test
   when: always
   tags:
@@ -40,3 +41,17 @@ inter_test:
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
+# deploys:
+#   stage: deploy
+#   when: manual
+#   dependencies:
+#     - build
+#   before_script:
+#     - eval $(ssh-agent -s)
+#     - ssh-keyscan 192.168.0.102 >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#   script:
+#     - cd src/helpers && sh ssh-copy.sh
+#   after_script:
+#     - echo "result=$CI_JOB_STATUS"
+#     - sh src/tg_bot/messages.sh
