@@ -2,7 +2,7 @@ stages:
   - build
   - style
   - test
-  # - deploy
+  - deploy
 
 builds:
   stage: build
@@ -41,17 +41,17 @@ tests:
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
-# deploys:
-#   stage: deploy
-#   when: manual
-#   dependencies:
-#     - build
-#   before_script:
-#     - eval $(ssh-agent -s)
-#     - ssh-keyscan 10.100.0.11 >> ~/.ssh/known_hosts
-#     - chmod 644 ~/.ssh/known_hosts
-#   script:
-#     - cd src/helpers && sh ssh-copy.sh
-#   after_script:
-#     - echo "result=$CI_JOB_STATUS"
-#     - sh src/tg_bot/messages.sh
+  deploys:
+    stage: deploy
+    when: manual
+    dependencies:
+      - build
+    before_script:
+      - eval $(ssh-agent -s)
+      - ssh-keyscan 10.100.0.11 >> ~/.ssh/known_hosts
+      - chmod 644 ~/.ssh/known_hosts
+    script:
+      - cd src/helpers && sh ssh-copy.sh
+    after_script:
+      - echo "result=$CI_JOB_STATUS"
+      - sh src/tg_bot/messages.sh
