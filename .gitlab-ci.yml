@@ -2,7 +2,7 @@ build-job:
   stage: build
   when: always
   tags:
-    - aladales
+    - aladales_test
   script:
     - cd src/part_2/C3_SimpleBashUtils-0/src/cat && make s21_cat && cd ../grep && make s21_grep
   artifacts:
@@ -17,7 +17,7 @@ style_test:
   stage: test
   when: always
   tags:
-    - aladales
+    - aladales_test
   script:
     - cd src/part_2/C3_SimpleBashUtils-0/src/cat  && make check && cd ../grep && make check
   after_script:
@@ -27,7 +27,7 @@ inter_test:
   stage: test
   when: always
   tags:
-    - aladales
+    - aladales_test
   script:
     - cd src/part_2/C3_SimpleBashUtils-0/src/cat && make s21_cat_test && cd ../grep && make s21_grep_test
   after_script:

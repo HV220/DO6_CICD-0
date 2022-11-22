@@ -4,7 +4,6 @@ Development of a simple **CI/CD** for the *SimpleBashUtils* project. Building, t
 
 The russian version of the task can be found in the repository.
 
-
 ## Contents
 
 1. [Chapter I](#chapter-i)
