@@ -1,3 +1,8 @@
+stages:
+  - build
+  - style
+  - test
+
 build-job:
   stage: build
   when: always
