@@ -15,7 +15,7 @@ build-job:
     - sh src/tg_bot/messages.sh
 
 style_test:
-  stage: test
+  stage: style_test
   when: always
   tags:
     - aladales_test
@@ -26,7 +26,7 @@ style_test:
     - sh src/tg_bot/messages.sh
 
 inter_test:
-  stage: test
+  stage: inter_test
   when: always
   tags:
     - aladales_test
