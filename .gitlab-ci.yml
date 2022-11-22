@@ -4,32 +4,34 @@ build-job:
   tags:
     - aladales_test
   script:
-    - cd src/part_2/C3_SimpleBashUtils-0/src/cat && make s21_cat && cd ../grep && make s21_grep
+    - cd src/C3_SimpleBashUtils-0/src/cat && make s21_cat && cd ../grep && make s21_grep
   artifacts:
     paths:
-      - src/part_2/C3_SimpleBashUtils-0/src/cat
-      - src/part_2/C3_SimpleBashUtils-0/src/grep
+      - src/C3_SimpleBashUtils-0/src/cat
+      - src/C3_SimpleBashUtils-0/src/grep
     expire_in: 30 days
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
+
 style_test:
   stage: test
   when: always
   tags:
     - aladales_test
   script:
-    - cd src/part_2/C3_SimpleBashUtils-0/src/cat  && make check && cd ../grep && make check
+    - cd src/C3_SimpleBashUtils-0/src/cat  && make check && make clean && cd ../grep && make check && make clean
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
+
 inter_test:
   stage: test
   when: always
   tags:
     - aladales_test
   script:
-    - cd src/part_2/C3_SimpleBashUtils-0/src/cat && make s21_cat_test && cd ../grep && make s21_grep_test
+    - cd src/C3_SimpleBashUtils-0/src/cat && make test && make clean && cd ../grep && make test && make clean
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
