@@ -24,9 +24,6 @@ style_test:
   after_script:
     - echo "result=$CI_JOB_STATUS"
     - sh src/tg_bot/messages.sh
-  rules:
-    - if: $CI_JOB_STATUS =~ /^feature/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != $CI_DEFAULT_BRANCH
-      when: never
 
 inter_test:
   stage: test
