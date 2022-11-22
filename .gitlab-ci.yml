@@ -50,7 +50,6 @@ deploys:
     - builds
   before_script:
     - eval $(ssh-agent -s)
-    - ssh-keyscan 10.100.0.11 >> ~/../aladales/.ssh/known_hosts
   script:
     - cd src/helpers && sh ssh-copy.sh
   after_script:
