@@ -44,6 +44,8 @@ tests:
 deploys:
   stage: deploy
   when: manual
+  tags:
+    - aladales_test
   dependencies:
     - builds
   before_script:
