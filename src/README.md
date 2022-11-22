@@ -1,6 +1,6 @@
 Разработка простого **CI/CD** для проекта. Сборка, тестирование, развертывание.
 ## Contents
-   [Настройка gitlab-runner](#part-1-настройка-gitlab-runner)
+  [Настройка gitlab-runner](#part-1-настройка-gitlab-runner)
 
 ### Part 1. Настройка **gitlab-runner**
 Настройка виртуальной машины
